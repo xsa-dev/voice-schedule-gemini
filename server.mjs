@@ -227,10 +227,12 @@ export function createApp({ failFirstCheck = false } = {}) {
           onerror: () => send({ error: 'Ошибка соединения Gemini. Проверьте ключ и доступность сервиса.' }),
           onclose: event => {
             if (!closed) {
+              const reason = String(event.reason || event.code).split(process.env.GEMINI_API_KEY).join('[hidden]').slice(0, 500);
+              console.error('Gemini session closed:', reason);
               const capped = event.reason?.includes('monthly spending cap');
               send({ error: capped
                 ? 'Gemini отклонил сессию: у проекта исчерпан месячный лимит. Проверьте бесплатную квоту проекта в AI Studio.'
-                : 'Gemini закрыл соединение. Проверьте доступ к Live API и квоту проекта.' });
+                : `Gemini закрыл соединение: ${reason}` });
             }
             client.close();
           },
