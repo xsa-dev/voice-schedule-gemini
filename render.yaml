@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: voice-schedule-gemini
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.3
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_LIVE_MODEL
+        value: gemini-2.5-flash-native-audio-preview-12-2025
+      - key: DEMO_FAIL_FIRST_CHECK
+        value: "0"

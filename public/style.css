@@ -1,0 +1,33 @@
+:root {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #1b2530;
+  background: #eff3f1;
+  --accent: #185446;
+  --line: #dce5e0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { width: min(720px, calc(100% - 32px)); margin: clamp(36px, 10vh, 100px) auto; }
+h1 { font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -.05em; margin: 0; }
+header p { color: #485a56; line-height: 1.5; margin: 14px 0 28px; }
+.session, .transcript { background: white; border: 1px solid var(--line); border-radius: 20px; padding: clamp(18px, 4vw, 28px); }
+.session { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.status { display: grid; gap: 6px; }
+.status span { font-size: .875rem; color: #485a56; }
+#state[data-stage="listening"], #state[data-stage="speaking"] { color: var(--accent); }
+#state[data-stage="error"], #error { color: #9d2f29; }
+#error { flex-basis: 100%; margin: 0; }
+#error:empty { display: none; }
+.buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+button { padding: 11px 16px; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; font: inherit; color: var(--accent); background: white; cursor: pointer; }
+#start { background: var(--accent); color: white; border-color: var(--accent); }
+button:disabled { opacity: .48; cursor: default; }
+button:focus-visible { outline: 2px solid #397bca; outline-offset: 3px; }
+.transcript { margin-top: 16px; }
+h2 { font-size: 1rem; margin: 0 0 16px; }
+#messages { min-height: 105px; max-height: 44vh; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+#messages:empty::before { content: 'Здесь появятся ваши реплики и ответы помощника.'; color: #485a56; font-size: .93rem; }
+article { padding: 12px 16px; border-radius: 12px; background: #f2f5f5; max-width: 90%; align-self: flex-start; overflow-wrap: anywhere; }
+article.user-message { background: #e4f2ea; align-self: flex-end; }
+article strong { color: var(--accent); font-size: .78rem; }
+article p { margin: 5px 0 0; line-height: 1.5; }

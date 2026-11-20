@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Голосовое расписание</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Голосовое расписание</h1>
+      <p>Спросите голосом: «Можно завтра после шести?»</p>
+    </header>
+    <section class="session" aria-label="Голосовая сессия">
+      <div class="status" role="status">
+        <strong id="state" data-stage="ended">Разговор завершён</strong>
+        <span id="connection">Нет соединения</span>
+      </div>
+      <div class="buttons">
+        <button id="start">Начать разговор</button>
+        <button id="end" disabled>Завершить</button>
+      </div>
+      <p id="error" role="alert"></p>
+    </section>
+    <section class="transcript" aria-labelledby="transcript-title">
+      <h2 id="transcript-title">Разговор</h2>
+      <div id="messages" role="log" aria-live="off"></div>
+    </section>
+    <audio id="audio" autoplay></audio>
+  </main>
+</body>
+</html>
